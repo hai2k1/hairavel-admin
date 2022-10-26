@@ -22,9 +22,9 @@ class Setting extends \Modules\System\Admin\Expend
 
         $data = collect(\Dotenv\Dotenv::createArrayBacked(base_path())->load());
         $form = new \Duxravel\Core\UI\Form($data, false);
-        $form->title('系统设置', false);
+        $form->title('Cài đặt hệ thống', false);
         $form->action(route('admin.system.setting.save'));
-        $form->layout(Widget::alert('系统设置选项为运维人员便捷使用，非专业人士或不清楚选项请勿随意修改，否则可能会导致系统崩溃', '安全提示', function ($alert) {
+        $form->layout(Widget::alert('Các tùy chọn cài đặt hệ thống thuận tiện cho nhân viên vận hành và bảo trì, và những người không chuyên nghiệp hoặc các tùy chọn không rõ ràng không nên tự ý sửa đổi, nếu không hệ thống có thể bị hỏng', '安全提示', function ($alert) {
             $alert->type('warning');
         }));
 
