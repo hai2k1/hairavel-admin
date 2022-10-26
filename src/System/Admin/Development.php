@@ -103,7 +103,7 @@ class Development extends Common
         foreach ($this->data as $key => $vo) {
             $this->assign($key, $vo);
         }
-        return $this->systemView('vendor/duxphp/duxravel-admin/src/System/View/Admin/Development/index');
+        return $this->systemView('vendor/haibase/hairavel-admin/src/System/View/Admin/Development/index');
     }
 
     private function data($label, $data)
