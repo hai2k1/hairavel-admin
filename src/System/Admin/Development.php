@@ -15,14 +15,14 @@ class Development extends Common
     public function index()
     {
         $startTime = strtotime('-6 day');
-        // 访问量
+        // Views
         $apiNumData = app(\Duxravel\Core\Model\VisitorApi::class)
             ->select(DB::raw('SUM(pv) as value, date as label'))
             ->where('date', '>=', date('Y-m-d', $startTime))
             ->groupBy('date')
             ->get();
         $apiNumData = $apiNumData->each(function ($item) {
-            $item['name'] = '访问量';
+            $item['name'] = 'Views';
             return $item;
         });
         $this->data('apiNum', $apiNumData);
@@ -30,12 +30,12 @@ class Development extends Common
         $apiNumChart = (new \Duxravel\Core\Util\Charts)
             ->area()
             ->date(date('Y-m-d', $startTime), date('Y-m-d'), '1 days', 'm-d')
-            ->data('访问量', $apiNumData->toArray())
+            ->data('Views', $apiNumData->toArray())
             ->height(200)
             ->render(true);
         $this->node['apiNumChart'] = $apiNumChart;
 
-        // 访问延迟
+        // access delay
         $apiTimeData = app(\Duxravel\Core\Model\VisitorApi::class)
             ->select(DB::raw('MAX(max_time) as max, MAX(min_time) as min, date as label'))
             ->where('date', '>=', date('Y-m-d', $startTime))
@@ -54,15 +54,15 @@ class Development extends Common
         $apiTimeChart = (new \Duxravel\Core\Util\Charts)
             ->line()
             ->date(date('Y-m-d', $startTime), date('Y-m-d'), '1 days', 'm-d')
-            ->data('最大延迟', $apiTimeMax)
-            ->data('最小延迟', $apiTimeMin)
+            ->data('Maximum delay', $apiTimeMax)
+            ->data('Minimum delay', $apiTimeMin)
             ->legend(true)
             ->height(200)
             ->render(true);
 
         $this->node['apiTimeChart'] = $apiTimeChart;
 
-        // 文件上传
+        // File Upload
         $fileNumData = app(\Duxravel\Core\Model\File::class)
             ->select(DB::raw('COUNT(*) as value, DATE_FORMAT(created_at,"%Y-%m-%d")  as label'))
             ->where('created_at', '>=', date('Y-m-d', $startTime))
@@ -74,13 +74,13 @@ class Development extends Common
         $fileNumChart = (new \Duxravel\Core\Util\Charts)
             ->column()
             ->date(date('Y-m-d', $startTime), date('Y-m-d'), '1 days', 'm-d')
-            ->data('文件数量', $fileNumData->toArray(), 'Y-m-d')
+            ->data('number of files', $fileNumData->toArray(), 'Y-m-d')
             ->height(200)
             ->render(true);
 
         $this->node['fileNumChart'] = $fileNumChart;
 
-        // 操作日志
+        //Operation log
         $operateData = app(\Duxravel\Core\Model\VisitorOperate::class)
             ->select(DB::raw('COUNT(*) as value, DATE_FORMAT(created_at,"%Y-%m-%d")  as label'))
             ->where('created_at', '>=', date('Y-m-d', $startTime))
@@ -92,7 +92,7 @@ class Development extends Common
         $logNumChart = (new \Duxravel\Core\Util\Charts)
             ->column()
             ->date(date('Y-m-d', $startTime), date('Y-m-d'), '1 days', 'm-d')
-            ->data('操作记录', $operateData->toArray(), 'Y-m-d')
+            ->data('Operation record', $operateData->toArray(), 'Y-m-d')
             ->render(true);
 
         $this->node['logNumChart'] = $logNumChart;
