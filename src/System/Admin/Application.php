@@ -14,7 +14,7 @@ class Application extends \Modules\System\Admin\Common
         $typeArr = ['business', 'market', 'tools'];
         $typeData = [];
         foreach ($data as $vo) {
-            if ($vo['name'] == '应用中心') continue;
+            if ($vo['name'] == 'application Center') continue;
             if(in_array($vo['type'], $typeArr)) {
                 $name = $vo['type'];
             }else {
@@ -26,8 +26,8 @@ class Application extends \Modules\System\Admin\Common
 
         $typeList = [
             'business' => [
-                'name' => '业务应用',
-                'desc' => '系统业务相关模块',
+                'name' => 'Business Applications',
+                'desc' => 'System business related modules',
                 'color' => 'blue',
                 'data' => $typeData['business'],
             ],
@@ -38,8 +38,8 @@ class Application extends \Modules\System\Admin\Common
                 'data' => $typeData['tools'],
             ],
             'other' => [
-                'name' => '其他应用',
-                'desc' => '系统为定义分类应用',
+                'name' => 'other apps',
+                'desc' => 'The system is used to define classification applications',
                 'color' => 'yellow',
                 'data' => $typeData['other'],
             ],
