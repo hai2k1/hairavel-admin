@@ -17,28 +17,28 @@ class Files extends \Modules\System\Admin\Expend
     {
         $table = new Table(new $this->model());
 
-        $table->title('文件管理');
+        $table->title('File management');
 
-        $table->filter('文件名', 'title', function ($query, $value) {
+        $table->filter('File name', 'title', function ($query, $value) {
             $query->where('title', 'like', '%' . $value . '%');
-        })->text('请输入文件名搜索')->quick();
+        })->text('Please enter file name to search')->quick();
 
-        $table->column('文件', 'title')->image('url', function ($value, $items) {
+        $table->column('Document', 'title')->image('url', function ($value, $items) {
             if (!in_array($items->ext, ['jpg', 'png', 'bmp', 'jpeg', 'gif'])) {
-                return route('service.image.placeholder', ['w' => 128, 'h' => 128, 't' => '暂无预览']);
+                return route('service.image.placeholder', ['w' => 128, 'h' => 128, 't' => 'No preview yet']);
             }
             return $value;
         })->desc('size', fn($value)=> app_filesize($value));
 
-        $table->column('关联类型 / 驱动', 'has_type')->desc('driver');
-        $table->column('上传时间', 'created_at', fn($value) => $value->format('Y-m-d H:i:s'));
+        $table->column('Association type / drive', 'has_type')->desc('driver');
+        $table->column('Created at', 'created_at', fn($value) => $value->format('Y-m-d H:i:s'));
 
 
-        $column = $table->column('操作')->width(100);
-        $column->link('删除', 'admin.system.files.del', ['id' => 'file_id'])->type('ajax', ['method' => 'post']);
+        $column = $table->column('Operate')->width(100);
+        $column->link('deleted', 'admin.system.files.del', ['id' => 'file_id'])->type('ajax', ['method' => 'post']);
 
 
-        $table->filter('分类', 'dir_id');
+        $table->filter('Sort', 'dir_id');
         $table->side(function () {
             return (new Node())->div(function ($node) {
                 $node->div(
