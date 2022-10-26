@@ -16,19 +16,19 @@ class FileDirTableSeeder extends Seeder
     {
         \DB::table('file_dir')->insert([
             [
-                'name' => '默认',
+                'name' => 'default',
                 'has_type' => 'admin',
             ],
             [
-                'name' => '图片',
+                'name' => 'image',
                 'has_type' => 'admin',
             ],
             [
-                'name' => '视频',
+                'name' => 'video',
                 'has_type' => 'admin',
             ],
             [
-                'name' => '其他',
+                'name' => 'other',
                 'has_type' => 'admin',
             ],
         ]);
