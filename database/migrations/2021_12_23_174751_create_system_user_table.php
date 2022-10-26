@@ -15,12 +15,12 @@ class CreateSystemUserTable extends Migration
     {
         Schema::create('system_user', function (Blueprint $table) {
             $table->increments('user_id');
-            $table->string('nickname', 20)->nullable()->comment('昵称');
-            $table->string('username', 20)->comment('用户名');
-            $table->string('password', 255)->comment('密码');
-            $table->rememberToken()->comment('随机码');
-            $table->string('avatar', 255)->nullable()->comment('头像');
-            $table->boolean('status')->default(1)->index('status')->comment('状态');
+            $table->string('nickname', 20)->nullable()->comment('nickname');
+            $table->string('username', 20)->comment('username');
+            $table->string('password', 255)->comment('password');
+            $table->rememberToken()->comment('token');
+            $table->string('avatar', 255)->nullable()->comment('avatar');
+            $table->boolean('status')->default(1)->index('status')->comment('status');
             $table->timestamps();
         });
     }
