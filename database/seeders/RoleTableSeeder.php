@@ -17,7 +17,7 @@ class RoleTableSeeder extends Seeder
         \DB::table('role')->insert([
             [
                 'guard' => 'admin',
-                'name' => '管理员',
+                'name' => 'admin',
                 'purview' => null,
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
