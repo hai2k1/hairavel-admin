@@ -9,7 +9,7 @@ use Modules\System\Events\MenuUrl;
 
 /**
  * Class UrlSelect
- * url选择器
+ * url selector
  * @package Duxravel\Core\UI\Form
  */
 class UrlSelect extends Element implements Component
@@ -34,7 +34,7 @@ class UrlSelect extends Element implements Component
     }
 
     /**
-     * 渲染组件
+     * render component
      * @param $value
      * @return string
      */
@@ -60,7 +60,7 @@ class UrlSelect extends Element implements Component
             'child' => [
                 [
                     'nodeName' => 'div',
-                    'child' => '选择',
+                    'child' => 'select',
                     'vOn:click' => <<<JS
                       window.appDialogTable({
                         multiple: false,
@@ -70,7 +70,7 @@ class UrlSelect extends Element implements Component
                             key: 'id'
                           },
                           {
-                            name: '名称',
+                            name: 'name',
                             key: 'title'
                           },
                         ],

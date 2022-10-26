@@ -12,20 +12,20 @@ class Form extends \Modules\System\Admin\Expend
     protected function table()
     {
         $table = new \Duxravel\Core\UI\Table(new $this->model());
-        $table->title('自定义表单');
-        $table->action()->button('添加', 'admin.tools.form.page')->type('dialog');
+        $table->title('custom form');
+        $table->action()->button('Add', 'admin.tools.form.page')->type('dialog');
 
-        $table->filter('名称', 'name', function ($query, $value) {
+        $table->filter('name', 'name', function ($query, $value) {
             $query->where('name', 'like', '%' . $value . '%');
-        })->text('请输入表单名搜索')->quick();
+        })->text('Please enter the form name to search')->quick();
 
         $table->column('#', 'form_id')->width(80);
-        $table->column('名称', 'name');
+        $table->column('name', 'name');
 
-        $column = $table->column('操作')->width(180);
-        $column->link('设计器', 'admin.tools.form.setting', ['id' => 'form_id']);
-        $column->link('编辑', 'admin.tools.form.page', ['id' => 'form_id'])->type('dialog');
-        $column->link('删除', 'admin.tools.form.del', ['id' => 'form_id'])->type('ajax', ['method' => 'post']);
+        $column = $table->column('operation')->width(180);
+        $column->link('Designer', 'admin.tools.form.setting', ['id' => 'form_id']);
+        $column->link('edit', 'admin.tools.form.page', ['id' => 'form_id'])->type('dialog');
+        $column->link('delete', 'admin.tools.form.del', ['id' => 'form_id'])->type('ajax', ['method' => 'post']) ;
 
         return $table;
     }
@@ -36,35 +36,35 @@ class Form extends \Modules\System\Admin\Expend
         $form->dialog(true);
 
 
-        $form->text('表单名称', 'name')->verify([
+        $form->text('form name', 'name')->verify([
             'required',
         ], [
-            'required' => '请填写表单名称',
+            'required' => 'Please fill in the form name',
         ]);
 
-        $form->textarea('表单描述', 'description')->verify([
+        $form->textarea('form description', 'description')->verify([
             'required',
         ], [
-            'required' => '请填写表单功能描述',
+            'required' => 'Please fill in the form function description',
         ]);
 
-        $form->radio('表单类型', 'manage', [
-            1 => '应用集成',
-            0 => '独立管理',
+        $form->radio('form type', 'manage', [
+            1 => 'Application Integration',
+            0 => 'independent management',
         ])->switch('manage');
 
-        $form->text('菜单名', 'menu')->group('manage', 0);
-        $form->text('搜索字段', 'search')->group('manage', 0);
-        $form->text('列表模板', 'tpl_list')->placeholder('留空关闭列表')->group('manage', 0);
-        $form->text('详情模板', 'tpl_info')->placeholder('留空关闭详情')->group('manage', 0);
-        $form->radio('前台提交', 'submit', [
-            1 => '正常',
-            0 => '禁用',
+        $form->text('menu name', 'menu')->group('manage', 0);
+        $form->text('search field', 'search')->group('manage', 0);
+        $form->text('list template', 'tpl_list')->placeholder('leave blank to close list')->group('manage', 0);
+        $form->text('Detail template', 'tpl_info')->placeholder('Leave blank to close details')->group('manage', 0);
+        $form->radio('Foreground submission', 'submit', [
+            1 => 'normal',
+            0 => 'disable',
         ])->group('manage', 0);
-        $form->number('提交间隔', 'interval')->group('manage', 0);
-        $form->radio('内容审核', 'audit', [
-            1 => '需要',
-            0 => '无需',
+        $form->number('Submission interval', 'interval')->group('manage', 0);
+        $form->radio('Content Audit', 'audit', [
+            1 => 'required',
+            0 => 'No need',
         ])->group('manage', 0);
         return $form;
     }
@@ -83,7 +83,7 @@ class Form extends \Modules\System\Admin\Expend
         $data = request()->input('data');
         $model = new \Duxravel\Core\Model\Form();
         $model->where('form_id', $id)->update(['data' => $data]);
-        return app_success('保存表单数据成功');
+        return app_success('Save form data successfully');
     }
 
 }

@@ -5,7 +5,7 @@ namespace Modules\System\Admin;
 class Upload extends Common
 {
     /**
-     * 强制文件驱动
+     * Mandatory file driver
      * @var string
      */
     protected string $driver = '';

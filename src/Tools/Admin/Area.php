@@ -13,19 +13,19 @@ class Area extends \Modules\System\Admin\Expend
     protected function table()
     {
         $table = new \Duxravel\Core\UI\Table(new $this->model());
-        $table->title('地区数据');
+        $table->title('regional data');
 
-        $table->action()->button('导入', 'admin.tools.area.import')->type('dialog');
+        $table->action()->button('import', 'admin.tools.area.import')->type('dialog');
 
-        $table->filter('名称', 'name', function ($query, $value) {
+        $table->filter('name', 'name', function ($query, $value) {
             $query->where('name', 'like', '%' . $value . '%');
-        })->text('请输入地区名搜索')->quick();
+        })->text('Please enter the area name to search')->quick();
 
-        $table->column('区号', 'code');
-        $table->column('名称', 'name');
+        $table->column('area code', 'code');
+        $table->column('name', 'name');
 
-        $column = $table->column('操作')->width(80);
-        $column->link('删除', 'admin.tools.area.del', ['id' => 'area_id'])->type('ajax', ['method' => 'post']);
+        $column = $table->column('operation')->width(80);
+        $column->link('delete', 'admin.tools.area.del', ['id' => 'area_id'])->type('ajax', ['method' => 'post']) ;
 
         return $table;
     }
@@ -35,25 +35,25 @@ class Area extends \Modules\System\Admin\Expend
         $form = new \Duxravel\Core\UI\Form(collect());
         $form->action(route('admin.tools.area.importData'));
         $form->dialog(true);
-        $form->file('导入数据', 'file')->verify([
+        $form->file('import data', 'file')->verify([
             'required',
         ], [
-            'required' => '请选择上传数据',
+            'required' => 'Please select upload data',
         ])->help([
             [
                 'nodeName' => 'span',
-                'child' => '数据来源'
+                'child' => 'data source'
             ],
             [
                 'nodeName' => 'a',
                 'class' => 'text-blue-600',
                 'href' => 'http://lbsyun.baidu.com/index.php?title=open/dev-res',
                 'target' => '_blank',
-                'child' => '【百度地图行政区划adcode映射表】',
+                'child' => '[Baidu map administrative division adcode mapping table]',
             ],
             [
                 'nodeName' => 'span',
-                'child' => '，上传后将覆盖现有数据'
+                'child' => ', existing data will be overwritten after upload'
             ]
         ], true);
         return $form->render();
@@ -115,9 +115,8 @@ class Area extends \Modules\System\Admin\Expend
             DB::table('system_area')->insert(array_values($vo));
         }
 
-        return app_success('导入数据成功', [], route('admin.tools.area'));
+        return app_success('Import data successfully', [], route('admin.tools.area'));
 
     }
-
 
 }
