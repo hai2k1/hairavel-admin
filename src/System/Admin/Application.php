@@ -32,8 +32,8 @@ class Application extends \Modules\System\Admin\Common
                 'data' => $typeData['business'],
             ],
             'tools' => [
-                'name' => '工具应用',
-                'desc' => '系统常用辅助工具',
+                'name' => 'tool application',
+                'desc' => 'Common auxiliary tools of the system',
                 'color' => 'green',
                 'data' => $typeData['tools'],
             ],
