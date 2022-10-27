@@ -12,7 +12,7 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "require": {
-    "haibase/haibase-app": "dev-main"
+
   },
   "require-dev": {
   },
