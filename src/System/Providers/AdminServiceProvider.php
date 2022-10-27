@@ -2,7 +2,7 @@
 
 namespace Modules\System\Providers;
 
-use Duxravel\Core\Util\Permission;
+use Hairavel\Core\Util\Permission;
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
@@ -43,7 +43,7 @@ class AdminServiceProvider extends ServiceProvider
 
         // 注册公共路由
         $router->group(['prefix' => 'admin', 'public' => true, 'middleware' => ['web']], function () {
-            $list = \Duxravel\Core\Util\Cache::routeList('Admin');
+            $list = \Hairavel\Core\Util\Cache::routeList('Admin');
             foreach ($list as $file) {
                 if (is_file($file)) {
                     $this->loadRoutesFrom($file);
@@ -51,7 +51,7 @@ class AdminServiceProvider extends ServiceProvider
             }
         });
         $router->group(['prefix' => 'admin', 'auth_has' => 'admin', 'middleware' => ['web', 'auth.manage']], function () {
-            $list = \Duxravel\Core\Util\Cache::routeList('AuthAdmin');
+            $list = \Hairavel\Core\Util\Cache::routeList('AuthAdmin');
             foreach ($list as $file) {
                 if (is_file($file)) {
                     $this->loadRoutesFrom($file);
