@@ -12,7 +12,7 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "require": {
-    "duxphp/duxravel-app": "*"
+    "haibase/haibase-app": "*"
   },
   "require-dev": {
   },
