@@ -9,5 +9,5 @@ namespace Modules\System\Admin;
 class Register extends Common
 {
 
-    use \Duxravel\Core\Manage\Register;
+    use \Hairavel\Core\Manage\Register;
 }

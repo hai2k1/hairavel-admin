@@ -2,15 +2,15 @@
 
 namespace Modules\Tools\UI;
 
-use Duxravel\Core\UI\Form\Component;
-use Duxravel\Core\UI\Form\Element;
-use Duxravel\Core\UI\Form\Text;
+use Hairavel\Core\UI\Form\Component;
+use Hairavel\Core\UI\Form\Element;
+use Hairavel\Core\UI\Form\Text;
 use Modules\System\Events\MenuUrl;
 
 /**
  * Class UrlSelect
  * url selector
- * @package Duxravel\Core\UI\Form
+ * @package Hairavel\Core\UI\Form
  */
 class UrlSelect extends Element implements Component
 {

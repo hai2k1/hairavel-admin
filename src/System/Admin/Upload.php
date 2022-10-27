@@ -11,5 +11,5 @@ class Upload extends Common
     protected string $driver = '';
 
 
-    use \Duxravel\Core\Manage\Upload;
+    use \Hairavel\Core\Manage\Upload;
 }

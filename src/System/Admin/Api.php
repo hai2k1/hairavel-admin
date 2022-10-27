@@ -2,13 +2,13 @@
 
 namespace Modules\System\Admin;
 
-use Duxravel\Core\UI\Form;
-use Duxravel\Core\UI\Table;
+use Hairavel\Core\UI\Form;
+use Hairavel\Core\UI\Table;
 
 class Api extends \Modules\System\Admin\Expend
 {
 
-    public string $model = \Duxravel\Core\Model\Api::class;
+    public string $model = \Hairavel\Core\Model\Api::class;
 
     protected function table(): Table
     {

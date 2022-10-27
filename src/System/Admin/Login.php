@@ -11,6 +11,6 @@ use Illuminate\Http\Request;
 class Login extends Common
 {
 
-    use \Duxravel\Core\Manage\Login;
+    use \Hairavel\Core\Manage\Login;
 
 }

@@ -6,6 +6,6 @@ class User extends \Modules\System\Admin\Expend
 {
     public string $model = \Modules\System\Model\SystemUser::class;
 
-    use \Duxravel\Core\Manage\User;
+    use \Hairavel\Core\Manage\User;
 
 }

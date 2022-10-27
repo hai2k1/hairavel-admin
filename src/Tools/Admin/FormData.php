@@ -7,18 +7,18 @@ use Illuminate\Validation\Rule;
 class FormData extends \Modules\System\Admin\Expend
 {
 
-    public string $model = \Duxravel\Core\Model\FormData::class;
+    public string $model = \Hairavel\Core\Model\FormData::class;
     protected $formInfo;
 
     public function __construct()
     {
         $formId = request()->get('form');
-        $this->formInfo = \Duxravel\Core\Model\Form::find($formId);
+        $this->formInfo = \Hairavel\Core\Model\Form::find($formId);
     }
 
     protected function table()
     {
-        $table = new \Duxravel\Core\UI\Table(new $this->model());
+        $table = new \Hairavel\Core\UI\Table(new $this->model());
         $table->model()->orderBy('data_id', 'desc');
         $table->model()->where('form_id', $this->formInfo->form_id);
         $table->title($this->formInfo->name);
@@ -64,17 +64,17 @@ class FormData extends \Modules\System\Admin\Expend
 
     public function form(int $id = 0)
     {
-        $form = new \Duxravel\Core\UI\Form();
+        $form = new \Hairavel\Core\UI\Form();
         $form->dialog(true);
         $form->action(route('admin.tools.formData.save', ['id' => $id, 'form' => $this->formInfo->form_id]));
-        app(\Duxravel\Core\Util\Form::class)->getFormUI($this->formInfo->form_id, $form, $id);
+        app(\Hairavel\Core\Util\Form::class)->getFormUI($this->formInfo->form_id, $form, $id);
         return $form;
     }
 
     public function save($id = 0)
     {
         $data = $this->form($id)->save();
-        app(\Duxravel\Core\Util\Form::class)->saveForm($this->formInfo->form_id, $data, $id);
+        app(\Hairavel\Core\Util\Form::class)->saveForm($this->formInfo->form_id, $data, $id);
         return app_success('update' . $this->formInfo['menu'] . 'success', [], route('admin.tools.formData', ['form' => $this->formInfo->form_id]));
     }
 

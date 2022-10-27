@@ -7,8 +7,8 @@ class Application extends \Modules\System\Admin\Common
 
     public function index()
     {
-        app(\Duxravel\Core\Util\Menu::class)->getManage('admin');
-        $data = app(\Duxravel\Core\Util\Menu::class)->getApps();
+        app(\Hairavel\Core\Util\Menu::class)->getManage('admin');
+        $data = app(\Hairavel\Core\Util\Menu::class)->getApps();
 
 
         $typeArr = ['business', 'market', 'tools'];
@@ -45,7 +45,7 @@ class Application extends \Modules\System\Admin\Common
             ],
         ];
         $this->assign('typeList', $typeList);
-        $formList = \Duxravel\Core\Model\Form::where('manage' , 0)->get();
+        $formList = \Hairavel\Core\Model\Form::where('manage' , 0)->get();
         $this->assign('formList', $formList);
         return $this->systemView('vendor/haibase/hairavel-admin/src/System/View/Admin/Application/index');
     }

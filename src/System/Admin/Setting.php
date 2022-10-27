@@ -2,11 +2,11 @@
 
 namespace Modules\System\Admin;
 
-use Duxravel\Core\Events\ManageForm;
-use Duxravel\Core\Events\ManageTable;
+use Hairavel\Core\Events\ManageForm;
+use Hairavel\Core\Events\ManageTable;
 use Illuminate\Support\Collection;
-use \Duxravel\Core\UI\Widget;
-use \Duxravel\Core\UI\Form;
+use \Hairavel\Core\UI\Widget;
+use \Hairavel\Core\UI\Form;
 
 class Setting extends \Modules\System\Admin\Expend
 {
@@ -18,10 +18,10 @@ class Setting extends \Modules\System\Admin\Expend
 
     public function form(): Form
     {
-        //$this->dispatch(new \Duxravel\Core\Jobs\Task(\Modules\System\Service\Menu::class, 'test', [], 20));
+        //$this->dispatch(new \Hairavel\Core\Jobs\Task(\Modules\System\Service\Menu::class, 'test', [], 20));
 
         $data = collect(\Dotenv\Dotenv::createArrayBacked(base_path())->load());
-        $form = new \Duxravel\Core\UI\Form($data, false);
+        $form = new \Hairavel\Core\UI\Form($data, false);
         $form->title('Cài đặt hệ thống', false);
         $form->action(route('admin.system.setting.save'));
         $form->layout(Widget::alert('Các tùy chọn cài đặt hệ thống thuận tiện cho nhân viên vận hành và bảo trì, và những người không chuyên nghiệp hoặc các tùy chọn không rõ ràng không nên tự ý sửa đổi, nếu không hệ thống có thể bị hỏng', '安全提示', function ($alert) {

@@ -5,7 +5,7 @@ namespace Modules\System\Model;
 use \Illuminate\Foundation\Auth\User;
 use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
-use Duxravel\Core\Traits\RoleHas;
+use Hairavel\Core\Traits\RoleHas;
 
 
 /**

@@ -6,6 +6,6 @@ namespace Modules\System\Admin;
 class Map extends Common
 {
 
-    use \Duxravel\Core\Manage\Map;
+    use \Hairavel\Core\Manage\Map;
 
 }

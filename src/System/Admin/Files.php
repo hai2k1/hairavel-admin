@@ -2,16 +2,16 @@
 
 namespace Modules\System\Admin;
 
-use Duxravel\Core\UI\Node;
-use Duxravel\Core\UI\Widget\Link;
-use Duxravel\Core\UI\Widget\TreeList;
+use Hairavel\Core\UI\Node;
+use Hairavel\Core\UI\Widget\Link;
+use Hairavel\Core\UI\Widget\TreeList;
 use Illuminate\Support\Facades\DB;
-use Duxravel\Core\UI\Table;
-use Duxravel\Core\UI\Widget;
+use Hairavel\Core\UI\Table;
+use Hairavel\Core\UI\Widget;
 
 class Files extends \Modules\System\Admin\Expend
 {
-    public string $model = \Duxravel\Core\Model\File::class;
+    public string $model = \Hairavel\Core\Model\File::class;
 
     protected function table(): Table
     {

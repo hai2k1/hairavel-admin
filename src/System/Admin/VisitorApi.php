@@ -3,12 +3,12 @@
 namespace Modules\System\Admin;
 
 use Illuminate\Support\Facades\DB;
-use Duxravel\Core\UI\Table;
-use Duxravel\Core\UI\Widget;
+use Hairavel\Core\UI\Table;
+use Hairavel\Core\UI\Widget;
 
 class VisitorApi extends \Modules\System\Admin\Expend
 {
-    public string $model = \Duxravel\Core\Model\VisitorApi::class;
+    public string $model = \Hairavel\Core\Model\VisitorApi::class;
 
     protected function table(): Table
     {
@@ -54,7 +54,7 @@ class VisitorApi extends \Modules\System\Admin\Expend
     {
         $day = request()->get('type', 7);
         $startTime = strtotime("-{$day} day");
-        $apiList = app(\Duxravel\Core\Model\VisitorApi::class)
+        $apiList = app(\Hairavel\Core\Model\VisitorApi::class)
             ->select(DB::raw('name, SUM(pv) as `value`, SUM(uv) as `uv`, `desc`'))
             ->where('date', '>=', date('Y-m-d', $startTime))
             ->groupBy('name', 'desc')
@@ -78,7 +78,7 @@ class VisitorApi extends \Modules\System\Admin\Expend
     {
         $day = request()->get('type', 7);
         $startTime = strtotime("-{$day} day");
-        $apiList = app(\Duxravel\Core\Model\VisitorApi::class)
+        $apiList = app(\Hairavel\Core\Model\VisitorApi::class)
             ->select(DB::raw('name, MAX(max_time) as `value`, `desc`'))
             ->where('date', '>=', date('Y-m-d', $startTime))
             ->groupBy('name', 'desc')

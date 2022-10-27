@@ -1,6 +1,6 @@
 <?php
 
-use \Duxravel\Core\Facades\Menu;
+use \Hairavel\Core\Facades\Menu;
 
 Menu::add('index', [
     'name' => 'front page',

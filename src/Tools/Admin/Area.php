@@ -3,16 +3,16 @@
 namespace Modules\Tools\Admin;
 
 use Illuminate\Support\Facades\DB;
-use Duxravel\Core\Util\Excel;
+use Hairavel\Core\Util\Excel;
 
 class Area extends \Modules\System\Admin\Expend
 {
 
-    public string $model = \Duxravel\Core\Model\Area::class;
+    public string $model = \Hairavel\Core\Model\Area::class;
 
     protected function table()
     {
-        $table = new \Duxravel\Core\UI\Table(new $this->model());
+        $table = new \Hairavel\Core\UI\Table(new $this->model());
         $table->title('regional data');
 
         $table->action()->button('import', 'admin.tools.area.import')->type('dialog');
@@ -32,7 +32,7 @@ class Area extends \Modules\System\Admin\Expend
 
     public function import()
     {
-        $form = new \Duxravel\Core\UI\Form(collect());
+        $form = new \Hairavel\Core\UI\Form(collect());
         $form->action(route('admin.tools.area.importData'));
         $form->dialog(true);
         $form->file('import data', 'file')->verify([

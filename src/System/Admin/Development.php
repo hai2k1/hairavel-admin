@@ -3,7 +3,7 @@
 namespace Modules\System\Admin;
 
 
-use Duxravel\Core\UI\Node;
+use Hairavel\Core\UI\Node;
 use Illuminate\Support\Facades\DB;
 
 class Development extends Common
@@ -16,7 +16,7 @@ class Development extends Common
     {
         $startTime = strtotime('-6 day');
         // Views
-        $apiNumData = app(\Duxravel\Core\Model\VisitorApi::class)
+        $apiNumData = app(\Hairavel\Core\Model\VisitorApi::class)
             ->select(DB::raw('SUM(pv) as value, date as label'))
             ->where('date', '>=', date('Y-m-d', $startTime))
             ->groupBy('date')
@@ -27,7 +27,7 @@ class Development extends Common
         });
         $this->data('apiNum', $apiNumData);
 
-        $apiNumChart = (new \Duxravel\Core\Util\Charts)
+        $apiNumChart = (new \Hairavel\Core\Util\Charts)
             ->area()
             ->date(date('Y-m-d', $startTime), date('Y-m-d'), '1 days', 'm-d')
             ->data('Views', $apiNumData->toArray())
@@ -36,7 +36,7 @@ class Development extends Common
         $this->node['apiNumChart'] = $apiNumChart;
 
         // access delay
-        $apiTimeData = app(\Duxravel\Core\Model\VisitorApi::class)
+        $apiTimeData = app(\Hairavel\Core\Model\VisitorApi::class)
             ->select(DB::raw('MAX(max_time) as max, MAX(min_time) as min, date as label'))
             ->where('date', '>=', date('Y-m-d', $startTime))
             ->groupBy('date')
@@ -51,7 +51,7 @@ class Development extends Common
         })->toArray();
         $this->data('apiTime', collect($apiTimeMax));
 
-        $apiTimeChart = (new \Duxravel\Core\Util\Charts)
+        $apiTimeChart = (new \Hairavel\Core\Util\Charts)
             ->line()
             ->date(date('Y-m-d', $startTime), date('Y-m-d'), '1 days', 'm-d')
             ->data('Maximum delay', $apiTimeMax)
@@ -63,7 +63,7 @@ class Development extends Common
         $this->node['apiTimeChart'] = $apiTimeChart;
 
         // File Upload
-        $fileNumData = app(\Duxravel\Core\Model\File::class)
+        $fileNumData = app(\Hairavel\Core\Model\File::class)
             ->select(DB::raw('COUNT(*) as value, DATE_FORMAT(created_at,"%Y-%m-%d")  as label'))
             ->where('created_at', '>=', date('Y-m-d', $startTime))
             //->where('has_type', 'admin')
@@ -71,7 +71,7 @@ class Development extends Common
             ->get();
         $this->data('fileNum', $fileNumData);
 
-        $fileNumChart = (new \Duxravel\Core\Util\Charts)
+        $fileNumChart = (new \Hairavel\Core\Util\Charts)
             ->column()
             ->date(date('Y-m-d', $startTime), date('Y-m-d'), '1 days', 'm-d')
             ->data('number of files', $fileNumData->toArray(), 'Y-m-d')
@@ -81,7 +81,7 @@ class Development extends Common
         $this->node['fileNumChart'] = $fileNumChart;
 
         //Operation log
-        $operateData = app(\Duxravel\Core\Model\VisitorOperate::class)
+        $operateData = app(\Hairavel\Core\Model\VisitorOperate::class)
             ->select(DB::raw('COUNT(*) as value, DATE_FORMAT(created_at,"%Y-%m-%d")  as label'))
             ->where('created_at', '>=', date('Y-m-d', $startTime))
             ->where('has_type', 'admin')
@@ -89,7 +89,7 @@ class Development extends Common
             ->get();
         $this->data('logNum', $operateData);
 
-        $logNumChart = (new \Duxravel\Core\Util\Charts)
+        $logNumChart = (new \Hairavel\Core\Util\Charts)
             ->column()
             ->date(date('Y-m-d', $startTime), date('Y-m-d'), '1 days', 'm-d')
             ->data('Operation record', $operateData->toArray(), 'Y-m-d')

@@ -8,5 +8,5 @@ namespace Modules\System\Admin;
  */
 class Expend extends Common
 {
-    use \Duxravel\Core\Manage\Expend;
+    use \Hairavel\Core\Manage\Expend;
 }

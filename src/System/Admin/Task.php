@@ -3,8 +3,8 @@
 namespace Modules\System\Admin;
 
 use Illuminate\Support\Facades\DB;
-use Duxravel\Core\UI\Table;
-use Duxravel\Core\UI\Widget;
+use Hairavel\Core\UI\Table;
+use Hairavel\Core\UI\Widget;
 
 class Task extends \Modules\System\Admin\Expend
 {
@@ -21,7 +21,7 @@ class Task extends \Modules\System\Admin\Expend
         $statsAll = 0;
         if ($type <> 3) {
             if ($class == 'database') {
-                $data = new \Duxravel\Core\Model\Jobs();
+                $data = new \Hairavel\Core\Model\Jobs();
                 $table = new Table($data);
             }
             if ($class == 'redis') {
@@ -77,12 +77,12 @@ class Task extends \Modules\System\Admin\Expend
                 $card->item('All queues', $statsAll);
                 $card->item('Processing', $statsDown);
                 $card->item('to be processed', $statsUp);
-                $statsFail = \Duxravel\Core\Model\JobsFailed::count();
+                $statsFail = \Hairavel\Core\Model\JobsFailed::count();
                 $card->item('Failure queue', $statsFail);
             }));
 
         } else {
-            $data = new \Duxravel\Core\Model\JobsFailed();
+            $data = new \Hairavel\Core\Model\JobsFailed();
             $table = new Table($data);
 
             $table->title('Task queue');

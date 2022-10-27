@@ -2,13 +2,13 @@
 
 namespace Modules\System\Admin;
 
-use Duxravel\Core\Model\FileDir;
-use Duxravel\Core\UI\Node;
-use Duxravel\Core\UI\Widget\Link;
-use Duxravel\Core\UI\Widget\TreeList;
+use Hairavel\Core\Model\FileDir;
+use Hairavel\Core\UI\Node;
+use Hairavel\Core\UI\Widget\Link;
+use Hairavel\Core\UI\Widget\TreeList;
 use Illuminate\Support\Facades\DB;
-use Duxravel\Core\UI\Table;
-use Duxravel\Core\UI\Widget;
+use Hairavel\Core\UI\Table;
+use Hairavel\Core\UI\Widget;
 
 class FilesDir extends \Modules\System\Admin\Expend
 {

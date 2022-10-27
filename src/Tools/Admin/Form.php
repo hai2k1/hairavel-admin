@@ -7,11 +7,11 @@ use Illuminate\Validation\Rule;
 class Form extends \Modules\System\Admin\Expend
 {
 
-    public string $model = \Duxravel\Core\Model\Form::class;
+    public string $model = \Hairavel\Core\Model\Form::class;
 
     protected function table()
     {
-        $table = new \Duxravel\Core\UI\Table(new $this->model());
+        $table = new \Hairavel\Core\UI\Table(new $this->model());
         $table->title('custom form');
         $table->action()->button('Add', 'admin.tools.form.page')->type('dialog');
 
@@ -32,7 +32,7 @@ class Form extends \Modules\System\Admin\Expend
 
     public function form(int $id = 0)
     {
-        $form = new \Duxravel\Core\UI\Form(new $this->model());
+        $form = new \Hairavel\Core\UI\Form(new $this->model());
         $form->dialog(true);
 
 
@@ -81,7 +81,7 @@ class Form extends \Modules\System\Admin\Expend
     public function settingSave(int $id)
     {
         $data = request()->input('data');
-        $model = new \Duxravel\Core\Model\Form();
+        $model = new \Hairavel\Core\Model\Form();
         $model->where('form_id', $id)->update(['data' => $data]);
         return app_success('Save form data successfully');
     }
