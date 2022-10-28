@@ -31,7 +31,7 @@
         "Modules\\Tools\\Providers\\ToolsServiceProvider"
       ]
     },
-    "duxravel": {
+    "hairavel": {
       "service": [
         "Modules\\System\\Service\\Service",
         "Modules\\System\\Service\\Menu",
