@@ -24,7 +24,7 @@ class Setting extends \Modules\System\Admin\Expend
         $form = new \Hairavel\Core\UI\Form($data, false);
         $form->title('Cài đặt hệ thống', false);
         $form->action(route('admin.system.setting.save'));
-        $form->layout(Widget::alert('Các tùy chọn cài đặt hệ thống thuận tiện cho nhân viên vận hành và bảo trì, và những người không chuyên nghiệp hoặc các tùy chọn không rõ ràng không nên tự ý sửa đổi, nếu không hệ thống có thể bị hỏng', '安全提示', function ($alert) {
+        $form->layout(Widget::alert('Các tùy chọn cài đặt hệ thống thuận tiện cho nhân viên vận hành và bảo trì, và những người không chuyên nghiệp hoặc các tùy chọn không rõ ràng không nên tự ý sửa đổi, nếu không hệ thống có thể bị hỏng', 'Thông báo', function ($alert) {
             $alert->type('warning');
         }));
 
