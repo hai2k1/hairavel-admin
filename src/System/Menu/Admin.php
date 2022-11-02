@@ -12,36 +12,36 @@ Menu::add('index', [
         'name' => 'console',
         'order' => 100,
     ], function () {
-        Menu::link('Operation and maintenance overview', 'admin.development', [], 1);
+        Menu::link('Lịch sử tương tác', 'admin.development', [], 1);
     });
 });
 
 Menu::add('system', [
-    'name' => 'set up',
+    'name' => 'Cài đặt',
     'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>',
     'order' => 150,
 ], function () {
     Menu::group([
-        'name' => 'set up',
+        'name' => 'Cài đặt',
         'order' => 100,
     ], function () {
         Menu::link('system settings', 'admin.system.setting');
     });
 
     Menu::group([
-        'name' => 'user',
+        'name' => 'User',
         'order' => 200,
     ], function () {
-        Menu::link('User Management', 'admin.system.user');
-        Menu::link('Role Management', 'admin.system.role');
+        Menu::link('Tài khoản quản lí', 'admin.system.user');
+        Menu::link('Quyền', 'admin.system.role');
     });
 
     Menu::group([
-        'name' => 'manage',
+        'name' => 'Quản lý',
         'order' => 201,
     ], function () {
-        Menu::link('Interface authorization', 'admin.system.api');
-        Menu::link('File management', 'admin.system.files');
+        Menu::link('Giao diện', 'admin.system.api');
+        Menu::link('Quản lý tệp', 'admin.system.files');
         Menu::link('Task queue', 'admin.system.task');
     });
 
@@ -49,8 +49,8 @@ Menu::add('system', [
         'name' => 'Record',
         'order' => 202,
     ], function () {
-        Menu::link('Interface Statistics', 'admin.system.visitorApi');
-        Menu::link('Operation log', 'admin.system.operate');
+        Menu::link('Thống kê giao diện', 'admin.system.visitorApi');
+        Menu::link('Nhật ký hoạt động', 'admin.system.operate');
     });
 });
 
